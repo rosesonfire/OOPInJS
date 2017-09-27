@@ -1,0 +1,83 @@
+<!DOCTYPE>
+<html>
+
+<head></head>
+
+
+<body>
+
+	<script>
+
+		// === Animal ===
+
+		const Animal = {
+			constructor: function(x){
+				this.x = x;
+				this.y = 4;
+			},
+			sleep: function(){
+				console.log("here");
+			}
+		};
+
+		const animal = Object.create(Animal);
+		animal.constructor(3);
+
+		// === Dog ===
+
+		const Dog = {
+			constructor: function(x){
+				Animal.constructor.bind(this)(x);
+				this.y = 5;
+		    	this.z = 6;
+			},
+			sleep: function(){
+				console.log("there");
+			},
+		};
+		Dog.__proto__ = Animal;
+
+		const dog = Object.create(Dog);
+		dog.constructor(3);
+		// dog.sleep();
+		// console.log("typeof Dog: ", "wrong - object");
+		// console.log("typeof dog", typeof dog);
+		// console.log("dog instanceof Dog", "wrong - undefined");
+		// console.log("dog instanceof Animal", "wrong - undefined");
+		// console.log("Animal.isPrototypeOf(Dog)", Animal.isPrototypeOf(Dog));
+		// console.log("Animal.isPrototypeOf(dog)", "wrong - true");
+		// console.log("Dog.isPrototypeOf(dog)", "wrong - true");
+		// console.log("Dog.constructor.name", "wrong - constructor");
+		// console.log("dog.constructor.name", "wrong - constructor");
+
+		// === Food ===
+
+		const Food = {
+			constructor: function() {
+				this.x = 3;
+			}
+		}
+
+		const food = Object.create(Food);
+		food.constructor();
+
+		// === Pizza ===
+
+		const Pizza = {
+			constructor: function(){
+				Food.constructor.bind(this)();
+				this.y = 4;
+			}
+		};
+		Pizza.__proto__ = Food;
+
+		const pizza = Object.create(Pizza);
+		pizza.constructor();
+		
+
+	</script>
+
+</body>
+
+
+</html>

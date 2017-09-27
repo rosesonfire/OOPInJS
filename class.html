@@ -1,0 +1,97 @@
+<!DOCTYPE>
+<html>
+
+<head></head>
+
+
+<body>
+
+	<script>
+
+		// === Animal ===
+
+		class Animal{
+		  constructor(x){
+		    this.x = x;
+		    this.y = 4;
+		  }
+		  sleep(){
+		    console.log("here");
+		  }
+		}
+
+		const animal = new Animal(3);
+
+		// === Dog ===
+
+		class Dog extends Animal{
+		  constructor(x){
+		    super(x);
+		    this.y = 5;
+		    this.z = 6;
+		  }
+		  sleep(){
+		    console.log("there");
+		  }
+		}
+
+		const dog = new Dog(3);
+		// console.log("typeof Dog: ", typeof Dog);
+		// console.log("typeof dog", typeof dog);
+		// console.log("dog instanceof Dog", dog instanceof Dog);
+		// console.log("dog instanceof Animal", dog instanceof Animal);
+		// console.log("Animal.isPrototypeOf(Dog)", Animal.isPrototypeOf(Dog));
+		// console.log("Animal.isPrototypeOf(dog)", Animal.isPrototypeOf(dog));
+		// console.log("Dog.isPrototypeOf(dog)", Dog.isPrototypeOf(dog));
+		// console.log("Dog.constructor.name", Dog.constructor.name);
+		// console.log("dog.constructor.name", dog.constructor.name);
+
+		// === Food ===
+
+		class Food {
+		  constructor(){
+		    this.x = 3;
+		  }
+		  static eat(){
+		    console.log("here");
+		  }
+		}
+
+		const food = new Food();
+
+		// === Pizza ===
+
+		class Pizza extends Food {
+		  constructor(){
+		    super();
+		    this.y = 4;
+		  }
+		  /*static eat(){
+		    super.eat();
+		    console.log("there");
+		  }*/
+		}
+
+		const pizza = new Pizza();
+
+		// === Fruit ===
+
+		class Fruit extends Food {
+		  constructor(){
+		    super();
+		    this.y = 4;
+		  }
+		  static eat(){
+		    super.eat();
+		    console.log("there");
+		  }
+		}
+
+		const fruit = new Fruit();
+		Fruit.eat();
+	</script>
+
+</body>
+
+
+</html>

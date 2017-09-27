@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html>
+
+<head></head>
+
+
+<body>
+
+	<script>
+
+		// === Animal ===
+
+		function Animal(x) {
+			this.x = x;
+			this.y = 4;
+		}
+		Animal.prototype.sleep = function() {
+			console.log("here");
+		}
+
+		const animal = new Animal(3);
+
+		// === Dog ===
+		
+		function Dog(x) {
+			Animal.bind(this)(x);
+		    this.y = 5;
+		    this.z = 6;
+		}
+		Dog.__proto__ = Animal;
+		Dog.prototype.sleep = function() {
+			console.log("there");
+		}
+		Dog.prototype.__proto__ = Animal.prototype;
+
+		const dog = new Dog(3);
+		// console.log("typeof Dog: ", typeof Dog);
+		// console.log("typeof dog", typeof dog);
+		// console.log("dog instanceof Dog", dog instanceof Dog);
+		// console.log("dog instanceof Animal", dog instanceof Animal);
+		// console.log("Animal.isPrototypeOf(Dog)", Animal.isPrototypeOf(Dog));
+		// console.log("Animal.isPrototypeOf(dog)", Animal.isPrototypeOf(dog));
+		// console.log("Dog.isPrototypeOf(dog)", Dog.isPrototypeOf(dog));
+		// console.log("Dog.constructor.name", Dog.constructor.name);
+		// console.log("dog.constructor.name", dog.constructor.name);
+
+		// === Food ===
+
+		function Food() {
+			this.x = 3;
+		}
+		Food.eat = function() {
+			console.log("here");
+		}
+
+		const food = new Food();
+		
+		// === Pizza ===
+
+		function Pizza() {
+			Food.bind(this)();
+		    this.y = 4;
+		}
+		Pizza.__proto__ = Food;
+		/*Pizza.eat = function() {
+			console.log("there");
+		}*/
+		Pizza.prototype.__proto__ = Food.prototype;
+
+		const pizza = new Pizza();
+
+		// === Fruit ===
+
+		function Fruit() {
+			Food.bind(this)();
+		    this.y = 4;
+		}
+		Fruit.__proto__ = Food;
+		Fruit.eat = function() {
+			Food.eat();
+			console.log("there");
+		}
+		Fruit.prototype.__proto__ = Food.prototype;
+
+		const fruit = new Fruit();
+		Fruit.eat();
+
+
+	</script>
+
+</body>
+
+
+</html>
